@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 
 class PageActivity : AppCompatActivity() {
 
@@ -123,8 +126,21 @@ class PageActivity : AppCompatActivity() {
                 Log.d("tripletta 2", t2.toString())
                 Log.d("tripletta 3", t3.toString())
 
+                val gson = GsonBuilder().create()
+                var jsonString = assets.open("sibilla.json").bufferedReader().use {
+                    it.readText()
+                }
+                Log.i("data", jsonString)
+                val sType = object : TypeToken<List<Sibilla>>() {}.type
+                val otherList: List<Sibilla> = gson.fromJson(jsonString, sType)
+
+                positionTaker(t1, otherList)
+                val finalString = positionTaker(t1, otherList);
+                Log.d("finalString", finalString)
+
 
                 val intent = Intent(this, LoadingActivity::class.java)
+                intent.putExtra("finalString",finalString);
                 startActivity(intent)
                 finish()
 
@@ -158,7 +174,7 @@ class PageActivity : AppCompatActivity() {
         return numberSum
     }
 
-    /*fun positionTaker(numberSum: IntArray, otherList: List<HomeFragment.Sibilla>): String{
+    fun positionTaker(numberSum: MutableList<Int>, otherList: List<Sibilla>): String{
 
         var j = 0;
         var firstRow1: String? = "";
@@ -175,7 +191,6 @@ class PageActivity : AppCompatActivity() {
                     && otherList[j].pos3 == numberSum[2].toString()){
                     firstRow1 = otherList[j].stringa1;
                     firstRow2 = otherList[j].stringa2;
-                    Log.d("result1", firstRow1 +firstRow2)
                 }
             }
 
@@ -185,10 +200,6 @@ class PageActivity : AppCompatActivity() {
                     && otherList[j].pos3 == numberSum[0].toString()){
                     secondRow1 = otherList[j].stringa1;
                     secondRow2 = otherList[j].stringa2;
-
-                    Log.d("result2", secondRow1 +secondRow2)
-
-
                 }
             }
 
@@ -198,16 +209,13 @@ class PageActivity : AppCompatActivity() {
                     && otherList[j].pos3 == numberSum[1].toString()){
                     thirdRow1 = otherList[j].stringa1;
                     thirdRow2 = otherList[j].stringa2;
-
-                    Log.d("result3", thirdRow1 +thirdRow2)
                 }
             }
 
             response = firstRow1 + secondRow1 + thirdRow1 + firstRow2 + secondRow2 + thirdRow2;
-            Log.d("Response", response)
             j++;
 
         }while(j<otherList.size);
         return response.toString();
-    }*/
+    }
 }

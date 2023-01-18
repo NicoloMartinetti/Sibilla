@@ -3,8 +3,8 @@ package com.example.sibilla
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -18,6 +18,9 @@ class LoadingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)
+        var finalString : String? = intent.getStringExtra("finalString")
+
+        Log.d("finalStringLoading", finalString.toString())
 
         logo = findViewById(R.id.logo)
         dot1 = findViewById(R.id.dot1)
@@ -75,6 +78,7 @@ class LoadingActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             val intent = Intent(this, ResultActivity::class.java)
+            intent.putExtra("finalString",finalString);
             startActivity(intent)
             finish()
         }, 3000)
