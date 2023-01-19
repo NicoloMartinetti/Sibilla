@@ -51,7 +51,21 @@ class PageActivity : AppCompatActivity() {
                 surname.text.isNotEmpty() &&
                 hometown.text.isNotEmpty()
             ) {
-                var questionText = question.text.toString().split(" ")
+                Log.d("domandaStart", question.text.toString())
+                var last = question.text.toString().last()
+                Log.d("last", last.toString())
+                var test : CharSequence
+                var questionText : List<String>
+
+                if (last.toString() == " ") {
+                    test = question.text.subSequence(0, question.length()-1)
+                    Log.d("domandaSpazioMeno", test.toString())
+                    questionText = test.toString().split(" ")
+                } else {
+                    questionText = question.text.toString().split(" ")
+                }
+
+                Log.d("domandaDefinitiva", questionText.toString())
 
                 for (i in 0..questionText.size-1)
                 {
@@ -83,7 +97,7 @@ class PageActivity : AppCompatActivity() {
                 lastLetter = answerStarts.last()
                 Log.d("last", lastLetter.toString())
 
-                var singleLetter= name.text.toString().first().lowercase();
+                var singleLetter = name.text.toString().first().lowercase();
                 var nameSum = cicleLetters(singleLetter);
                 Log.d("nameSum", nameSum.toString())
                 singleLetter= surname.text.toString().first().lowercase();
