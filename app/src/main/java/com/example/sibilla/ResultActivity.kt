@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.pdf.PdfDocument.Page
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -11,6 +12,7 @@ class ResultActivity : AppCompatActivity() {
 
     private lateinit var result: TextView
     private lateinit var next: TextView
+    private lateinit var faq: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +21,7 @@ class ResultActivity : AppCompatActivity() {
 
         result = findViewById(R.id.result)
         next = findViewById(R.id.next)
+        faq = findViewById(R.id.faq)
 
         result.text = finalString.toString()
 
@@ -28,6 +31,12 @@ class ResultActivity : AppCompatActivity() {
 
         next.setOnClickListener {
             val intent = Intent(this, PageActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        faq.setOnClickListener {
+            val intent = Intent(this, InfoActivity::class.java)
             startActivity(intent)
             finish()
         }

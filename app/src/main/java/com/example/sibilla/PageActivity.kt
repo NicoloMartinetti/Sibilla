@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,7 @@ class PageActivity : AppCompatActivity() {
     private lateinit var surname: EditText
     private lateinit var hometown: EditText
     private lateinit var sender: Button
+    private lateinit var faq: ImageButton
 
     private var letters = arrayOf("kqwyx", "huv", "ers", "mt", "lo", "ag", "ijn", "cf", "dz", "pb");
     private var numbers = arrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -40,9 +42,16 @@ class PageActivity : AppCompatActivity() {
         surname = findViewById(R.id.lastName)
         hometown = findViewById(R.id.bornPlace)
         sender = findViewById(R.id.sender)
+        faq = findViewById(R.id.faq)
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
+        }
+
+        faq.setOnClickListener {
+            val intent = Intent(this, InfoActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         sender.setOnClickListener {
@@ -67,9 +76,9 @@ class PageActivity : AppCompatActivity() {
 
                 Log.d("domandaDefinitiva", questionText.toString())
 
-                for (i in 0..questionText.size-1)
+                for (element in questionText)
                 {
-                    var singleLetter= questionText[i].first().lowercase();
+                    var singleLetter= element.first().lowercase();
                     var j = 0;
                     do {
                         var k = 0;
