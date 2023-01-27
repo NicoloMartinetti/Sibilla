@@ -101,7 +101,8 @@
                 android:text="@string/info_title"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="18dp"
+                android:textSize="22dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/backArrow" />

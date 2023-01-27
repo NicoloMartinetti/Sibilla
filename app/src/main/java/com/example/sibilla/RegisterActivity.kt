@@ -5,22 +5,22 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class LoginActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var register: TextView
+    private lateinit var login: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_register)
 
-        register = findViewById(R.id.register)
+        login = findViewById(R.id.login)
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
 
-        register.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+        login.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
