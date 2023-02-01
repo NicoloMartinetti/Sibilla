@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,7 @@ class PageActivity : AppCompatActivity() {
     private lateinit var hometown: EditText
     private lateinit var sender: Button
     private lateinit var faq: ImageButton
+    private lateinit var shop: LinearLayout
 
     private var letters = arrayOf("kqwyx", "huv", "ers", "mt", "lo", "ag", "ijn", "cf", "dz", "pb");
     private var numbers = arrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -43,6 +45,7 @@ class PageActivity : AppCompatActivity() {
         hometown = findViewById(R.id.bornPlace)
         sender = findViewById(R.id.sender)
         faq = findViewById(R.id.faq)
+        shop = findViewById(R.id.shop)
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
@@ -50,6 +53,12 @@ class PageActivity : AppCompatActivity() {
 
         faq.setOnClickListener {
             val intent = Intent(this, InfoActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        shop.setOnClickListener {
+            val intent = Intent(this, ShopActivity::class.java)
             startActivity(intent)
             finish()
         }

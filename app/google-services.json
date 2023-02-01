@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "655560585038",
+    "project_id": "sibilla-bdb24",
+    "storage_bucket": "sibilla-bdb24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655560585038:android:8aaf25f4092a2f8e55b81f",
+        "android_client_info": {
+          "package_name": "com.example.sibilla"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655560585038-t0calkjqma9v0t36jom5kk5u6ldc1mol.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF50UiLDfeO5YZsg9LKamNFKGZSeZ2GGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655560585038-t0calkjqma9v0t36jom5kk5u6ldc1mol.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

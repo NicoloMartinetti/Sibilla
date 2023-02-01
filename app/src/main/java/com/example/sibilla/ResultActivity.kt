@@ -5,6 +5,7 @@ import android.graphics.pdf.PdfDocument.Page
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -13,6 +14,7 @@ class ResultActivity : AppCompatActivity() {
     private lateinit var result: TextView
     private lateinit var next: TextView
     private lateinit var faq: ImageButton
+    private lateinit var shop: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +24,7 @@ class ResultActivity : AppCompatActivity() {
         result = findViewById(R.id.result)
         next = findViewById(R.id.next)
         faq = findViewById(R.id.faq)
+        shop = findViewById(R.id.shop)
 
         result.text = finalString.toString()
 
@@ -37,6 +40,12 @@ class ResultActivity : AppCompatActivity() {
 
         faq.setOnClickListener {
             val intent = Intent(this, InfoActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        shop.setOnClickListener {
+            val intent = Intent(this, ShopActivity::class.java)
             startActivity(intent)
             finish()
         }

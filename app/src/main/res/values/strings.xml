@@ -16,4 +16,6 @@
     <string name="password">password</string>
     <string name="nome_e_cognome">nome e cognome</string>
     <string name="username">username</string>
+    <string name="invita">INVITA</string>
+    <string name="acquista">ACQUISTA</string>
 </resources>
