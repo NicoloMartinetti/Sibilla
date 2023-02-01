@@ -60,13 +60,14 @@ class RegisterActivity : AppCompatActivity() {
 
                     if (currentUser != null) {
                         db.collection("users").document(currentUser.uid).set(userHashMap)
-
-                        editor.putString("Logged", "Yes")
-                        editor.apply()
-                        Toast.makeText(this, "User Created", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, LoginActivity::class.java)
-                        startActivity(intent)
-                        finish()
+                            .addOnCompleteListener {
+                                editor.putString("Logged", "Yes")
+                                editor.apply()
+                                Toast.makeText(this, "User Created", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this, LoginActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
                     }
                 }
 

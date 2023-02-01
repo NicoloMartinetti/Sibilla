@@ -27,4 +27,13 @@
     <string name="info2_2">C’è da dire che alla fine dell’Ottocento la passione per l’occulto si diffuse a macchia d’olio tra le classi dirigenti e gli intellettuali, in un moltiplicarsi di sedute spiritiche, società teosofiche e sette di vario genere. E anche sul lago d’Orta, nelle sere tranquille, insospettabili personaggi si trovavano per evocare gli spiriti e conoscere il proprio destino.</string>
     <string name="salta">salta</string>
     <string name="inizia">INIZIA</string>
+    <string name="edit">MODIFICA PROFILO</string>
+    <string name="notifiche">Notifiche</string>
+    <string name="ricevi_notifiche">Ricevi Notifiche</string>
+    <string name="iscrizione_alla_newsletter">Iscrizione alla Newsletter</string>
+    <string name="pagamenti">Pagamenti</string>
+    <string name="cambia_metodo_di_pagamento">Cambia metodo di pagamento</string>
+    <string name="saldo">Saldo</string>
+    <string name="richiedi_assistenza">Richiedi Assistenza</string>
+    <string name="esci">Esci</string>
 </resources>

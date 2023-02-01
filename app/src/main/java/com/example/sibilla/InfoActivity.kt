@@ -15,6 +15,7 @@ class InfoActivity : AppCompatActivity() {
     private lateinit var shop: LinearLayout
     private lateinit var firstCazzillo: ImageButton
     private lateinit var secondCazzillo: ImageButton
+    private lateinit var account: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,7 @@ class InfoActivity : AppCompatActivity() {
         shop = findViewById(R.id.shop)
         firstCazzillo = findViewById(R.id.firstCazzillo)
         secondCazzillo = findViewById(R.id.secondCazzillo)
+        account = findViewById(R.id.account)
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
@@ -49,6 +51,12 @@ class InfoActivity : AppCompatActivity() {
 
         secondCazzillo.setOnClickListener {
             val intent = Intent(this, InfoDetail2Activity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        account.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             finish()
         }

@@ -3,6 +3,8 @@ package com.example.sibilla
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -22,6 +24,7 @@ class PageActivity : AppCompatActivity() {
     private lateinit var sender: Button
     private lateinit var faq: ImageButton
     private lateinit var shop: LinearLayout
+    private lateinit var account: ImageButton
 
     private var letters = arrayOf("kqwyx", "huv", "ers", "mt", "lo", "ag", "ijn", "cf", "dz", "pb");
     private var numbers = arrayOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -46,10 +49,19 @@ class PageActivity : AppCompatActivity() {
         sender = findViewById(R.id.sender)
         faq = findViewById(R.id.faq)
         shop = findViewById(R.id.shop)
+        account = findViewById(R.id.account)
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
+
+        question.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                //Perform Code
+                return@OnKeyListener true
+            }
+            false
+        })
 
         faq.setOnClickListener {
             val intent = Intent(this, InfoActivity::class.java)
@@ -59,6 +71,12 @@ class PageActivity : AppCompatActivity() {
 
         shop.setOnClickListener {
             val intent = Intent(this, ShopActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        account.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             finish()
         }

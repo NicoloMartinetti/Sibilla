@@ -14,6 +14,7 @@ class InfoDetail2Activity : AppCompatActivity() {
     private lateinit var backArrow: ImageButton
     private lateinit var faq: ImageButton
     private lateinit var shop: LinearLayout
+    private lateinit var account: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +23,7 @@ class InfoDetail2Activity : AppCompatActivity() {
         backArrow = findViewById(R.id.backArrow)
         faq = findViewById(R.id.faq)
         shop = findViewById(R.id.shop)
+        account = findViewById(R.id.account)
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
@@ -41,6 +43,12 @@ class InfoDetail2Activity : AppCompatActivity() {
 
         shop.setOnClickListener {
             val intent = Intent(this, ShopActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        account.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             finish()
         }

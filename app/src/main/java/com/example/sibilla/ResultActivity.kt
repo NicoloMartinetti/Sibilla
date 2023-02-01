@@ -15,6 +15,7 @@ class ResultActivity : AppCompatActivity() {
     private lateinit var next: TextView
     private lateinit var faq: ImageButton
     private lateinit var shop: LinearLayout
+    private lateinit var account: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class ResultActivity : AppCompatActivity() {
         next = findViewById(R.id.next)
         faq = findViewById(R.id.faq)
         shop = findViewById(R.id.shop)
+        account = findViewById(R.id.account)
 
         result.text = finalString.toString()
 
@@ -58,6 +60,12 @@ class ResultActivity : AppCompatActivity() {
 
         shop.setOnClickListener {
             val intent = Intent(this, ShopActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        account.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             finish()
         }

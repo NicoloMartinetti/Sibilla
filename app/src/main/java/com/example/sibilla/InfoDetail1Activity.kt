@@ -16,6 +16,7 @@ class InfoDetail1Activity : AppCompatActivity() {
     private lateinit var faq: ImageButton
     private lateinit var shop: LinearLayout
     private lateinit var avanti: Button
+    private lateinit var account: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class InfoDetail1Activity : AppCompatActivity() {
         faq = findViewById(R.id.faq)
         shop = findViewById(R.id.shop)
         avanti = findViewById(R.id.avanti)
+        account = findViewById(R.id.account)
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
@@ -50,6 +52,12 @@ class InfoDetail1Activity : AppCompatActivity() {
 
         avanti.setOnClickListener {
             val intent = Intent(this, InfoDetail2Activity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        account.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             finish()
         }
