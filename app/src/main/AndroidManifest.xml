@@ -35,6 +35,21 @@
         <activity android:name=".ShopActivity"
             android:exported="false"
             android:screenOrientation="portrait"/>
+        <activity android:name=".InfoDetail1Activity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".InfoDetail2Activity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Tutorial1Activity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Tutorial2Activity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Tutorial3Activity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

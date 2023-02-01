@@ -2,6 +2,7 @@ package com.example.sibilla
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -34,13 +35,24 @@ class LoginActivity : AppCompatActivity() {
         login = findViewById(R.id.send)
         skip = findViewById(R.id.skip)
 
+        val preferences = getSharedPreferences("Login", MODE_PRIVATE)
+        val loginRegistration = preferences.getString("Logged", "")
+        val editor = preferences.edit()
+
         if (supportActionBar != null) {
             supportActionBar!!.hide()
+        }
+
+        if (loginRegistration.equals("No")) {
+            skip.isEnabled = false
+            skip.visibility = View.GONE
         }
 
         login.setOnClickListener {
             auth.signInWithEmailAndPassword(email.text.toString(),pwd.text.toString())
                 .addOnSuccessListener {
+                    editor.putString("Logged", "Yes")
+                    editor.apply()
                     val intent = Intent(this, PageActivity::class.java)
                     startActivity(intent)
                     finish()

@@ -2,6 +2,7 @@ package com.example.sibilla
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -35,9 +36,17 @@ class RegisterActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
         skip = findViewById(R.id.skip)
 
+        val preferences = getSharedPreferences("Login", MODE_PRIVATE)
+        val loginRegistration = preferences.getString("Logged", "")
+        val editor = preferences.edit()
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
+        }
+
+        if (loginRegistration.equals("No")) {
+            skip.isEnabled = false
+            skip.visibility = View.GONE
         }
 
         signIn.setOnClickListener {
@@ -52,6 +61,8 @@ class RegisterActivity : AppCompatActivity() {
                     if (currentUser != null) {
                         db.collection("users").document(currentUser.uid).set(userHashMap)
 
+                        editor.putString("Logged", "Yes")
+                        editor.apply()
                         Toast.makeText(this, "User Created", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)

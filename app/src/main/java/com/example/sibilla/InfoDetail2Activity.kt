@@ -9,46 +9,38 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 
 
-class InfoActivity : AppCompatActivity() {
+class InfoDetail2Activity : AppCompatActivity() {
 
     private lateinit var backArrow: ImageButton
+    private lateinit var faq: ImageButton
     private lateinit var shop: LinearLayout
-    private lateinit var firstCazzillo: ImageButton
-    private lateinit var secondCazzillo: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_info)
+        setContentView(R.layout.activity_info_detail_2)
 
         backArrow = findViewById(R.id.backArrow)
+        faq = findViewById(R.id.faq)
         shop = findViewById(R.id.shop)
-        firstCazzillo = findViewById(R.id.firstCazzillo)
-        secondCazzillo = findViewById(R.id.secondCazzillo)
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
 
         backArrow.setOnClickListener {
-            val intent = Intent(this, PageActivity::class.java)
+            val intent = Intent(this, InfoActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        faq.setOnClickListener {
+            val intent = Intent(this, InfoActivity::class.java)
             startActivity(intent)
             finish()
         }
 
         shop.setOnClickListener {
             val intent = Intent(this, ShopActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        firstCazzillo.setOnClickListener {
-            val intent = Intent(this, InfoDetail1Activity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        secondCazzillo.setOnClickListener {
-            val intent = Intent(this, InfoDetail2Activity::class.java)
             startActivity(intent)
             finish()
         }

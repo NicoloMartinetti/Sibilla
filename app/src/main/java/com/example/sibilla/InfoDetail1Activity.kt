@@ -4,33 +4,40 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 
 
-class InfoActivity : AppCompatActivity() {
+class InfoDetail1Activity : AppCompatActivity() {
 
     private lateinit var backArrow: ImageButton
+    private lateinit var faq: ImageButton
     private lateinit var shop: LinearLayout
-    private lateinit var firstCazzillo: ImageButton
-    private lateinit var secondCazzillo: ImageButton
+    private lateinit var avanti: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_info)
+        setContentView(R.layout.activity_info_detail_1)
 
         backArrow = findViewById(R.id.backArrow)
+        faq = findViewById(R.id.faq)
         shop = findViewById(R.id.shop)
-        firstCazzillo = findViewById(R.id.firstCazzillo)
-        secondCazzillo = findViewById(R.id.secondCazzillo)
+        avanti = findViewById(R.id.avanti)
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
 
         backArrow.setOnClickListener {
-            val intent = Intent(this, PageActivity::class.java)
+            val intent = Intent(this, InfoActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        faq.setOnClickListener {
+            val intent = Intent(this, InfoActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -41,13 +48,7 @@ class InfoActivity : AppCompatActivity() {
             finish()
         }
 
-        firstCazzillo.setOnClickListener {
-            val intent = Intent(this, InfoDetail1Activity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        secondCazzillo.setOnClickListener {
+        avanti.setOnClickListener {
             val intent = Intent(this, InfoDetail2Activity::class.java)
             startActivity(intent)
             finish()

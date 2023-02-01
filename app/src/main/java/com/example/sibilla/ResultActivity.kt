@@ -28,14 +28,26 @@ class ResultActivity : AppCompatActivity() {
 
         result.text = finalString.toString()
 
+        val preferences = getSharedPreferences("Login", MODE_PRIVATE)
+        val loginRegistration = preferences.getString("Logged", "")
+        val editor = preferences.edit()
+
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
 
         next.setOnClickListener {
-            val intent = Intent(this, PageActivity::class.java)
-            startActivity(intent)
-            finish()
+            if (loginRegistration.equals("Yes")) {
+                val intent = Intent(this, PageActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                editor.putString("Logged","No")
+                editor.apply()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
 
         faq.setOnClickListener {

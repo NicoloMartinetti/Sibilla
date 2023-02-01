@@ -18,4 +18,13 @@
     <string name="username">username</string>
     <string name="invita">INVITA</string>
     <string name="acquista">ACQUISTA</string>
+    <string name="l_oracolo_della_sibilla">L\'ORACOLO DELLA SIBILLA?</string>
+    <string name="info1_1">Anticamente il desiderio di conoscere il proprio destino e di scrutare il futuro, era cosa molto diffusa e per soddisfare quest’esigenza esistevano molti luoghi dove individui più o meno accreditati si dedicavano alla divinazione con la stesura d’oracoli. Ogni oracolo aveva un metodo tutto proprio di profetizzare le risposte che erano date al richiedente avevano in comune l’essere enigmatici ed oscuri, e spesso era necessario l’intervento dell’esperto per decifrare e capirne il contenuto. “Per questo motivo erano dette sibilline”.</string>
+    <string name="info1_2">Uno di questi metodi, e quello della sibilla cusiana, che qui vi presentiamo. Per far sì che la sibilla risponda adeguatamente e importante che la domanda sia rivolta a cose future e riferibile alla persona che interroga. Bisogna prima scrivere la domanda, poi il nome e cognome e il paese nativo. Si sottopone un numero corrispondente ad ogni prima lettera come da esempio.Dai numeri sottoposti se ne dovranno estrarre 3 che saranno la chiave per avere l’oracolo della sibilla.</string>
+    <string name="vai_avanti">Vai Avanti</string>
+    <string name="chi_la_sibilla_cusiana">CHI È LA SIBILLA CUSIANA?</string>
+    <string name="info2_1">Accanto alle diverse e famose sibille dell’antichità esiste anche una sibilla dalle nostre parti. Per la precisione sul lago d’Orta. Nell’Ottocento venne dato alle stampe un libro intitolato “L\'oracolo della Sibilla Cusiana” che nel titolo richiama un “Oracolo della Sibilla Cumana” di Pico della Mirandola. È un libro che tra il serio e il faceto gioca con le possibili combinazioni dei responsi permettendo al lettore di avere un oracolo sul comodino.</string>
+    <string name="info2_2">C’è da dire che alla fine dell’Ottocento la passione per l’occulto si diffuse a macchia d’olio tra le classi dirigenti e gli intellettuali, in un moltiplicarsi di sedute spiritiche, società teosofiche e sette di vario genere. E anche sul lago d’Orta, nelle sere tranquille, insospettabili personaggi si trovavano per evocare gli spiriti e conoscere il proprio destino.</string>
+    <string name="salta">salta</string>
+    <string name="inizia">INIZIA</string>
 </resources>
