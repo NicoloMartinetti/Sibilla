@@ -62,9 +62,9 @@ class LoginActivity : AppCompatActivity() {
             supportActionBar!!.hide()
         }
 
-        if (loginRegistration.equals("No")) {
-            skip.isEnabled = false
-            skip.visibility = View.GONE
+        if (loginRegistration.equals("")) {
+            skip.isEnabled = true
+            skip.visibility = View.VISIBLE
         }
 
         login.setOnClickListener {
