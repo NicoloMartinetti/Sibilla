@@ -3,15 +3,19 @@ package com.example.sibilla
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -22,6 +26,10 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var email: EditText
     private lateinit var pwd: EditText
     private lateinit var skip: TextView
+
+    private lateinit var gso: GoogleSignInOptions
+    private lateinit var gsc: GoogleSignInClient
+    private lateinit var google: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +42,17 @@ class LoginActivity : AppCompatActivity() {
         pwd = findViewById(R.id.password)
         login = findViewById(R.id.send)
         skip = findViewById(R.id.skip)
+
+        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+        gsc = GoogleSignIn.getClient(this, gso)
+        google = findViewById(R.id.google)
+
+        val acct = GoogleSignIn.getLastSignedInAccount(this)
+        if (acct != null) {
+            navigateToSecondActivity()
+        }
+
+        google.setOnClickListener(View.OnClickListener { signIn() })
 
         val preferences = getSharedPreferences("Login", MODE_PRIVATE)
         val loginRegistration = preferences.getString("Logged", "")
@@ -89,5 +108,30 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    fun signIn() {
+        val signInIntent = gsc.signInIntent
+        startActivityForResult(signInIntent, 1000)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1000) {
+            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                task.getResult(ApiException::class.java)
+                navigateToSecondActivity()
+            } catch (e: ApiException) {
+                Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+    }
+
+    fun navigateToSecondActivity() {
+        val intent = Intent(this, PageActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

@@ -1,14 +1,13 @@
 package com.example.sibilla
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.widget.Button
-import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -20,6 +19,9 @@ class Tutorial1Activity : AppCompatActivity() {
     private lateinit var avanti: Button
     private lateinit var auth: FirebaseAuth
 
+    private lateinit var gso: GoogleSignInOptions
+    private lateinit var gsc: GoogleSignInClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tutorial_1)
@@ -27,6 +29,9 @@ class Tutorial1Activity : AppCompatActivity() {
         skip = findViewById(R.id.skip)
         avanti = findViewById(R.id.avanti)
         auth = Firebase.auth
+
+        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+        gsc = GoogleSignIn.getClient(this,gso);
 
         if (supportActionBar != null) {
             supportActionBar!!.hide()
@@ -54,6 +59,14 @@ class Tutorial1Activity : AppCompatActivity() {
         super.onStart()
         val currentUser=auth.currentUser
         if(currentUser != null)
+        {
+            val intent = Intent(this, PageActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        val acct = GoogleSignIn.getLastSignedInAccount(this)
+        if(acct != null)
         {
             val intent = Intent(this, PageActivity::class.java)
             startActivity(intent)

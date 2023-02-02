@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,6 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sibilla">
+
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY" />
+
         <activity
             android:name=".PageActivity"
             android:exported="false"
@@ -17,42 +34,51 @@
         <activity
             android:name=".LoadingActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ResultActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".InfoActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegisterActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ShopActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ShopActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".InfoDetail1Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InfoDetail1Activity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".InfoDetail2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InfoDetail2Activity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Tutorial1Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Tutorial1Activity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Tutorial2Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Tutorial2Activity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Tutorial3Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Tutorial3Activity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfileActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

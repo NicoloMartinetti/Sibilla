@@ -1,23 +1,17 @@
 package com.example.sibilla
 
 import android.content.Intent
-import android.icu.text.IDNA.Info
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.marginLeft
-import androidx.core.view.marginRight
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import org.w3c.dom.Text
+
 
 class ProfileActivity: AppCompatActivity() {
 
@@ -28,6 +22,9 @@ class ProfileActivity: AppCompatActivity() {
     private lateinit var exit: TextView
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var gso: GoogleSignInOptions
+    private lateinit var gsc: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +41,9 @@ class ProfileActivity: AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         exit = findViewById(R.id.exit)
+
+        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+        gsc = GoogleSignIn.getClient(this,gso);
 
         backArrow.setOnClickListener {
             val intent = Intent(this, PageActivity::class.java)
@@ -65,6 +65,10 @@ class ProfileActivity: AppCompatActivity() {
 
         exit.setOnClickListener {
             auth.signOut()
+            gsc.signOut().addOnCompleteListener {
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
